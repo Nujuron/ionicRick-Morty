@@ -10,7 +10,7 @@
 <ion-content>
   <div *ngIf="character">
     <ion-card>
-      <img src="{{character.image}}" alt="">
+      <ion-img [src]="character.image"></ion-img>
       <ion-card-header>
         <ion-card-title>{{ character.name }}</ion-card-title>
         <ion-card-subtitle>{{ character.status }}</ion-card-subtitle>
