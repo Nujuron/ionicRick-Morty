@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-users-list',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersListPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private HttpClient : HttpClient
+  ) { }
 
   ngOnInit() {
+    this.HttpClient.get("https://rickandmortyapi.com/api/character")
+      .subscribe(
+        response => {
+          console.log(response)
+        },
+        error => console.log(error),
+        () => console.log("Petición completa")
+      )
+      
   }
 
 }
