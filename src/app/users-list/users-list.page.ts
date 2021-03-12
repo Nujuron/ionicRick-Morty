@@ -8,15 +8,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersListPage implements OnInit {
 
+  characters: object[] = [];
+
   constructor(
     private HttpClient : HttpClient
   ) { }
 
   ngOnInit() {
-    this.HttpClient.get("https://rickandmortyapi.com/api/character")
+    this.HttpClient.get<any>("https://rickandmortyapi.com/api/character")
       .subscribe(
         response => {
           console.log(response)
+          this.characters = response.results;
         },
         error => console.log(error),
         () => console.log("Petición completa")
